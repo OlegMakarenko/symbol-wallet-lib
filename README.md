@@ -22,34 +22,34 @@ Import `SymbolExtension` module from the package.
 import { SymbolExtension } from 'symbol-wallet-lib';
 ```
 
-Create instance of `SymbolExtension` and register provider.
-Once provider is registered, check if it's connected to the wallet.
-Then you can start communication with the wallet.
+Create an instance of `SymbolExtension` and register the provider.
+Once a provider is registered, check if it's connected to the wallet.
+Then the interaction with the wallet can be started.
 
 ```js
 const symbolExtension = new SymbolExtension();
 await symbolExtension.registerProvider();
 
 if (symbolExtension.isConnected()) {
-  console.log('Wallet is accessible and ready for communication');
+  console.log('The wallet is accessible and ready for communication.');
 }
 ```
 
 ### Sending a Transaction
 
-To create transaction you can use [symbol-sdk](https://github.com/symbol/symbol/tree/dev/sdk/javascript).
+To create transactions you can use [symbol-sdk](https://github.com/symbol/symbol/tree/dev/sdk/javascript).
 Then the transaction needs to be serialized. Example with `symbol-sdk`:
 
 ```js
 const transactionPayload = uint8ToHex(transaction.serialize());
 ```
 
-Request transaction sending confirmation in the wallet.
+Send a transaction to the wallet for confirmation by the user.
 
 ```js
 try {
   await symbolExtension.requestTransaction(transactionPayload);
-  console.log('Transaction is waiting a user confirmation');
+  console.log('Transaction is waiting for a user confirmation.');
 }
 catch (error) {
   console.error(error);
@@ -58,13 +58,13 @@ catch (error) {
 
 ### Getting an account info
 
-Request account info permission. The promise resolves as soon as the request is delivered to the wallet.
+Request the account info permission. The promise is getting resolved as soon as the request is delivered to the wallet.
 
 ```js
 await symbolExtension.requestAccountPermission();
 ```
 
-Request account info.
+Request the account info.
 
 ```js
 try {
