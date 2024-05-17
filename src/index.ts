@@ -1,0 +1,1 @@
+export { SymbolExtension } from './SymbolExtension';
